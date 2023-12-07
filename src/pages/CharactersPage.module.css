@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Josefin+Sans&display=swap');
+
+.items-container {
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+}
+
+.character-card {
+    cursor: pointer;
+    position: relative;
+    padding: 1rem;
+    margin: 1rem;
+    width: 270px;
+    height: 340px;
+    transition: all .2s ease-in-out;
+}
+
+.character-card .logo {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.character-card .logo img {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    transition: all .2s ease-in-out;
+}
+
+.character-card-info {
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    border: 2px dashed #8b8b8b;
+    padding-top: 150px;
+    color: #b6b6b6;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 125px;
+    background-color: #000;
+    border-radius: 10px;
+}
+
+.character-card-info .character-name {
+    font-family: 'Archivo Black', sans-serif;
+    text-transform: uppercase;
+    color: #B3D24C;
+    margin-bottom: 5px;
+}
+
+.character-card:hover {
+    transform: translateY(-15px);
+}
+
+.character-card:hover img {
+    transform: scale(1.1);
+}
+
+.character-card:hover .character-card-info {
+    box-shadow: 0px 17px 26px 0px #000;
+}
+
+.pagination {
+    font-family: 'Archivo Black', sans-serif;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8b8b8b;
+}
+
+.pagination li {
+    cursor: pointer;
+    margin: 5px;
+    transition: all .15s ease-in;
+}
+
+.pagination li:hover:not(.btn-prev-page, .btn-next-page) {
+    color: #B3D24C;
+}
+
+.active-page {
+    color: #fff;
+}
+
+.btn-prev-page,
+.btn-next-page {
+    color: #fff;
+    background-color: #B3D24C;
+    padding: .5rem .8rem;
+    border-radius: 5px;
+}
+
+.btn-prev-page:hover,
+.btn-next-page:hover {
+    background-color: #00AFC7;
+}
