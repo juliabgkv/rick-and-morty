@@ -4,10 +4,9 @@ import logo from '../assets/rick-and-morty-31015.png';
 import styles from './MainNavigation.module.css';
 
 function MainNavigation() {
-
   return (
     <div className={styles['top-bar']}>
-        <Link to='/'>
+        <Link to='/characters'>
           <img 
             src={logo} 
             alt='Rick And Morty Logo'
