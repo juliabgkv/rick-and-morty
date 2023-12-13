@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Pagination from "react-js-pagination";
 import SearchBar from '../components/SearchBar';
 import styles from './CharactersPage.module.css';
+import CharacterCard from '../components/CharacterCard';
 
 function CharactersPage() {
     const location = useLocation();
@@ -88,19 +89,7 @@ function CharactersPage() {
             
             <div className={styles['items-container']}>
                 {characters && characters.map(character => (
-                    <Link to={`/characters/${character.id}`} key={character.id} end="true">
-                        <div className={styles['character-card']}>
-                            <div className={styles.logo}>
-                                <img src={character.image} alt={`${character.name} Photo`}/>
-                            </div>
-                            <div className={styles['character-card-info']}>
-                                <div className={styles['character-name']}>{character.name}</div>
-                                <div>Gender: {character.gender}</div>
-                                <div>Status: {character.status}</div>
-                                <div>Specie: {character.species}</div>
-                            </div>
-                        </div>
-                    </Link>
+                    <CharacterCard character={character}/>
                 ))}
             </div>
 
