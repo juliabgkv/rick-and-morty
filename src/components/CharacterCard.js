@@ -4,7 +4,7 @@ import styles from './CharacterCard.module.css';
 
 function CharacterCard({ character }) {
   return (
-    <Link to={`/characters/${character.id}`} key={character.id} end="true">
+    <Link to={`/characters/${character.id}`} end="true">
         <div className={styles['character-card']}>
             <div className={styles.logo}>
                 <img src={character.image} alt={`${character.name} Photo`}/>
