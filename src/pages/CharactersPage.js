@@ -12,24 +12,16 @@ function CharactersPage() {
     const location = useLocation();
     const navigate = useNavigate();
     const queryParams = new URLSearchParams(location.search);
-    const queryPage = Number(queryParams.get('page')) || 1;
-    const queryName = queryParams.get('name') || '';
 
-    const [ filter, setFilter ] = useState({ 
-        currentPage: queryPage, 
-        name: queryName,
-        gender: queryParams.get('gender') || '',
-        status: queryParams.get('status') || '',
-        species: queryParams.get('species') || ''
-    });
+    const [ filter, setFilter ] = useState({});
     const [loading, setLoading] = useState(true);
     const [characters, setCharacters] = useState();
     const [pagesInfo, setPagesInfo] = useState({ pages: 1, count: 0 });
 
     useEffect(() => {
         setFilter({ 
-            currentPage: queryPage, 
-            name: queryName ? queryName : '',
+            currentPage: Number(queryParams.get('page')) || 1, 
+            name: queryParams.get('name') || '',
             gender: queryParams.get('gender') || '',
             status: queryParams.get('status') || '',
             species: queryParams.get('species') || ''
@@ -65,10 +57,6 @@ function CharactersPage() {
     }, [filter]);
 
     function handlePageChange(pageNumber) {
-        setFilter(prevState => {
-            return { ...prevState, currentPage: pageNumber };
-        });
-
         queryParams.set('page', pageNumber);
         navigate({ search: queryParams.toString() });
 
@@ -76,38 +64,18 @@ function CharactersPage() {
     }
 
     function handleSearch(input) {
-        setFilter(prevState => {
-            return { ...prevState, name: input, currentPage: 1 };
-        });
-
         queryParams.set('page', 1);
         queryParams.set('name', input);
         navigate({ search: queryParams.toString() });
     }
 
     function handleFilters(filterName, value) {
-        setFilter(prevState => {
-            return {
-                ...prevState,
-                currentPage: 1,
-                [filterName]: value
-            };
-        });
         queryParams.set(filterName, value);
         queryParams.set('page', 1);
         navigate({ search: queryParams.toString() });
     }
 
     function handleResetFilters() {
-        setFilter(prevState => {
-            return {
-                currentPage: 1,
-                name: prevState.name,
-                gender: '',
-                status: '',
-                species: ''
-            };
-        });
         queryParams.delete('gender');
         queryParams.delete('status');
         queryParams.delete('species');
