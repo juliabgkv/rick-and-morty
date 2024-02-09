@@ -1,16 +1,30 @@
-/* .accordion-item {
-
-} */
-
 .accordion-item-btn {
-    background-color: #787878;
+    font-family: 'Josefin Sans', sans-serif;
+    position: relative;
+    background-color: #393939;
+    padding: 10px 15px;
     cursor: pointer;
+}
+
+.accordion-item-btn::after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 10px;
+    background-image: url('../../assets/right-arrow.png');
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    transition: .3s ease-in-out;
 }
 
 .accordion-item-body {
     max-height: 0;
     overflow: hidden;
     transition: all .3s ease-in-out;
+}
+.accordion-item.active .accordion-item-btn::after {
+    transform: rotate(180deg);
 }
 
 .accordion-item.active .accordion-item-body {

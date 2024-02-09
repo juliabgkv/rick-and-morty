@@ -1,0 +1,9 @@
+.option-label {
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+    transition: .15s ease-in-out;
+}
+
+.option-label:hover {
+    color: #8b8b8b;
+}

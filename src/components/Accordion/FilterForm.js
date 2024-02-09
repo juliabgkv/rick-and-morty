@@ -14,13 +14,14 @@ function FilterForm({ filterName, options }) {
         <form onSubmit = {e => e.preventDefault()}>
             {options.map(option => (
                 <div key={option}>
-                    <label>
+                    <label className={styles['option-label']}>
                         <input 
                             type='radio' 
                             id={option} 
                             value={option} 
                             onChange={handleOptionChange}
-                            checked={filter[filterName] == option}
+                            checked={filter[filterName] === option}
+                            className={styles['option-input']}
                         />
                         {option[0].toUpperCase() + option.substring(1)}
                     </label>

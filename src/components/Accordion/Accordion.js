@@ -10,9 +10,12 @@ function Accordion({ resetFilters }) {
 
     return (
         <div className={styles.accordion}>
-            <div>
-                <h4>Filters</h4>
-                <button onClick={handleResetFilters}>Reset filters</button>
+            <div className={styles.header}>
+                <h4 className={styles.title}>Filters</h4>
+                <button 
+                    className={styles['reset-filters-btn']}
+                    onClick={handleResetFilters}
+                >Reset filters</button>
             </div>
             {FILTERS.map(f => (
                 <AccordionItem 
