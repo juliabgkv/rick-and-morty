@@ -1,0 +1,42 @@
+.location-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 180px;
+    min-height: 100px;
+    padding: 1.5rem 1rem;
+    margin: 1rem;
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    border: 2px dashed #8b8b8b;
+    background-color: #000;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.location-card:hover {
+    box-shadow: 0px 17px 26px 0px #000;
+    transform: translateY(-10px);
+}
+
+.location-name {
+    font-size: 1.5rem;
+    color: #b3d24c;
+    margin: 0 0 15px;
+    transition: all .15s ease-in-out;
+}
+
+.location-card:hover .location-card-name {
+    color: #b3d24c;
+}
+
+.location-type {
+    color: #b6b6b6;
+    margin: 0;
+}
+
+.location-residents {
+    margin: 5px 0 0;
+    color: #fff;
+}

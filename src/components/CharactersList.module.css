@@ -1,0 +1,6 @@
+.items-container {
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+}

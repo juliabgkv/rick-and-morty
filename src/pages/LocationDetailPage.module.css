@@ -1,0 +1,55 @@
+.container {
+    margin: 2rem 1rem;
+}
+
+.back-btn {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    padding: 5px 5px 0;
+    margin-bottom: 25px;
+    color: #fff;
+    text-align: right;
+    border: none;
+    width: 90px;
+    height: 40px;
+    background-color: #b3d24c;
+    background-image: url(../assets/left-arrow.png);
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    background-position: left 5px top 50%;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.back-btn:hover {
+    background-color: #00AFC7;
+    background-position: left;
+}
+
+.location-main-info {
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+}
+
+.location-name {
+    font-size: 3rem;
+    color: #b3d24c;
+}
+
+.location-type,
+.location-dimension {
+    color: #b6b6b6;
+    font-size: 1.1rem;
+}
+
+.location-type {
+    padding: .5rem;
+}
+
+.accented {
+    font-size: 1.3rem;
+    color: #fff;
+}
