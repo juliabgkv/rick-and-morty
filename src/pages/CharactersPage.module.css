@@ -10,6 +10,17 @@
     display: flex;
 }
 
+.right-side {
+    width: 100%;
+}
+
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15rem;
+}
+
 .loader {
     width: 48px;
     height: 48px;

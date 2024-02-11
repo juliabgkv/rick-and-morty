@@ -89,14 +89,13 @@ function CharactersPage() {
             {!loading && !pagesInfo.count && <div className={styles['search-result-message']}>There is nothing here</div>}
 
             <div className={styles['main-content']}>
-                <Accordion 
-                    resetFilters={handleResetFilters}
-                    className={styles['left-side']}
-                />
+                <Accordion resetFilters={handleResetFilters} />
                 <div className={styles['right-side']}>
                     {loading ? 
-                        <span className={styles.loader}></span> :
-                    ''}
+                        <div className={styles['loader-container']}>
+                            <span className={styles.loader}></span>
+                        </div>
+                    : ''}
 
                     <CharactersList 
                         characters={characters}
