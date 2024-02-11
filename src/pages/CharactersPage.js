@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import SearchBar from '../components/SearchBar';
+import SearchBar from '../components/UI/SearchBar';
 import Accordion from '../components/Accordion/Accordion';
 import FilterContext from '../context/FilterContext';
 import CharactersList from '../components/CharactersList';

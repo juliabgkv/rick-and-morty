@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import CharactersList from '../components/CharactersList';
 import styles from './LocationDetailPage.module.css';
+import BackButton from '../components/UI/BackButton';
 
 function LocationDetailPage() {
     const params = useParams();
-    const navigate = useNavigate();
     const [locationInfo, setLocationInfo] = useState({});
     const [residents, setResidents] = useState([]);
 
@@ -34,10 +34,7 @@ function LocationDetailPage() {
 
     return (
         <div className={styles.container}>
-            <button 
-                onClick={() => navigate(-1)}
-                className={styles['back-btn']}
-            >Back</button>
+            <BackButton />
             <div className={styles['location-main-info']}>
                 <div className={styles['location-name']}>{locationInfo.name}</div>
                 <div className={styles['location-type']}>Type: <span className={styles.accented}>{locationInfo.type}</span></div>

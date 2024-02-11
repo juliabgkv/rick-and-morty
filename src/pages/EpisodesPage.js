@@ -20,7 +20,6 @@ function EpisodesPage() {
         episodesArr = episodesArr.concat(data.results);
         nextUrl = data.info.next;
       }
-      console.log(episodesArr);
       
       setEpisodes(episodesArr);
     }
