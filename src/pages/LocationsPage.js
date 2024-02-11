@@ -4,7 +4,6 @@ import paginationStyles from './Pagination.module.css';
 import LocationCard from '../components/LocationCard';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import Pagination from 'react-js-pagination';
-import styles from './LocationsPage.module.css';
 
 function LocationsPage() {
   const location = useLocation();
@@ -45,7 +44,7 @@ function LocationsPage() {
 
   return (
     <>
-      <FadeIn className={styles['locations-container']}>
+      <FadeIn className={'flex-container'}>
         {locations && locations.map(location => (
           <LocationCard key={location.id} location={location}/>
         ))}

@@ -1,13 +1,12 @@
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import Pagination from 'react-js-pagination';
 import CharacterCard from './CharacterCard';
-import styles from './CharactersList.module.css';
 import paginationStyles from '../pages/Pagination.module.css';
 
 function CharactersList(props) {
   return (
     <>
-        <FadeIn className={styles['items-container']}>
+        <FadeIn className={'flex-container'}>
                 {props.characters && props.characters.map(character => (
                     <CharacterCard 
                         character={character} 

@@ -1,0 +1,18 @@
+.episode-card {
+    color: #fff;
+}
+
+.episode-name {
+    font-family: 'Archivo Black', sans-serif;
+    color: #B3D24C;
+    font-size: 1.1rem;
+}
+
+.episode-date {
+    font-size: .9rem;
+    margin: 1rem 0;
+}
+
+.episode {
+    color: #00afc7;
+}
