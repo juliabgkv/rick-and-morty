@@ -1,3 +1,32 @@
 .character-details {
     color: #fff;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+}
+
+.character-details-card {
+    font-family: 'Josefin Sans', sans-serif;
+    border: 2px dashed #8b8b8b;
+    background-color: #000;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 0 1rem 3rem;
+}
+
+.character-details-card > div { 
+    margin-bottom: .5rem;
+}
+
+.character-img {
+    border-radius: 50%;
+    margin-bottom: 2rem;
+}
+
+.character-name {
+    font-family: 'Archivo Black', sans-serif;
+    color: #B3D24C;
+    font-size: 1.3rem;
 }

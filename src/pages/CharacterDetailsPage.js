@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import BackButton from '../components/UI/BackButton';
 import styles from './CharacterDetailsPage.module.css';
 
 function CharacterDetailsPage() {
@@ -26,9 +27,13 @@ function CharacterDetailsPage() {
         <div className={styles['character-details']}>
             {loading && <p>Loading...</p>}
             {character && 
-                <div>
-                    <img src={character.image} alt={character.name} />
-                    <div>{character.name}</div>
+                <div className={styles['character-details-card']}>
+                    <img 
+                        src={character.image} 
+                        alt={character.name} 
+                        className={styles['character-img']}
+                    />
+                    <div className={styles['character-name']}>{character.name}</div>
                     <div>Status: {character.status}</div>
                     <div>Specie: {character.species}</div>
                     <div>Gender: {character.gender}</div>
@@ -36,6 +41,7 @@ function CharacterDetailsPage() {
                     <div>Location: {character.location.name}</div>
                 </div>
             }
+            <BackButton />
         </div>
     );
 }

@@ -16,10 +16,12 @@ function MainNavigation() {
         <nav className={styles.navigation}>
             <NavLink 
               to='/characters'
+              end='true'
               className={({ isActive }) => isActive ? 'active' : undefined }
             >Characters</NavLink>
             <NavLink 
               to='/locations'
+              end='true'
               className={({ isActive }) => isActive ? 'active' : undefined }
             >Locations</NavLink>
             <NavLink 
