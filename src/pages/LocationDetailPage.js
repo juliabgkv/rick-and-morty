@@ -44,11 +44,18 @@ function LocationDetailPage() {
             {loading && <LoadingSpinner />}
             {!loading && locationInfo &&
                 <div className={styles.container}>
-                    <BackButton />
                     <div className={styles['location-main-info']}>
-                        <div className={styles['location-name']}>{locationInfo.name}</div>
-                        <div className={styles['location-type']}>Type: <span className={styles.accented}>{locationInfo.type}</span></div>
-                        <div className={styles['location-dimension']}>Dimension: <span className={styles.accented}>{locationInfo.dimension}</span></div>
+                        <div className={styles['location-name']}>
+                            {locationInfo.name}
+                        </div>
+                        <div className={styles['location-type']}>
+                            Type: <span className={styles.accented}>{locationInfo.type}</span>
+                        </div>
+                        <div className={styles['location-dimension']}>
+                            Dimension: <span className={styles.accented}>{locationInfo.dimension}</span>
+                        </div>
+                        
+                    <BackButton />
                     </div>
                     {loadingResidents &&
                         <LoadingSpinner />
