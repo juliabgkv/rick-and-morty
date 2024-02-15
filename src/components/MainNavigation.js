@@ -6,7 +6,7 @@ import styles from './MainNavigation.module.css';
 function MainNavigation() {
   return (
     <div className={styles['top-bar']}>
-        <Link to='/characters'>
+        <Link to='/'>
           <img 
             src={logo} 
             alt='Rick And Morty Logo'
@@ -14,6 +14,11 @@ function MainNavigation() {
           />
         </Link>
         <nav className={styles.navigation}>
+            <NavLink 
+              to='/'
+              end='true'
+              className={({ isActive }) => isActive ? 'active' : undefined }
+            >Home</NavLink>
             <NavLink 
               to='/characters'
               end='true'
