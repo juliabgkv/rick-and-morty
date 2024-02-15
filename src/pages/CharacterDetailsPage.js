@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import BackButton from '../components/UI/BackButton';
 import styles from './CharacterDetailsPage.module.css';
+import LoadingSpinner from '../components/UI/LoadingSpinner';
 
 function CharacterDetailsPage() {
    const params = useParams();
@@ -25,23 +26,25 @@ function CharacterDetailsPage() {
 
     return (
         <div className={styles['character-details']}>
-            {loading && <p>Loading...</p>}
+            {loading && <LoadingSpinner />}
             {character && 
-                <div className={styles['character-details-card']}>
-                    <img 
-                        src={character.image} 
-                        alt={character.name} 
-                        className={styles['character-img']}
-                    />
-                    <div className={styles['character-name']}>{character.name}</div>
-                    <div>Status: {character.status}</div>
-                    <div>Specie: {character.species}</div>
-                    <div>Gender: {character.gender}</div>
-                    <div>Origin: {character.origin.name}</div>
-                    <div>Location: {character.location.name}</div>
-                </div>
+                <>
+                    <div className={styles['character-details-card']}>
+                        <img 
+                            src={character.image} 
+                            alt={character.name} 
+                            className={styles['character-img']}
+                        />
+                        <div className={styles['character-name']}>{character.name}</div>
+                        <div>Status: {character.status}</div>
+                        <div>Specie: {character.species}</div>
+                        <div>Gender: {character.gender}</div>
+                        <div>Origin: {character.origin.name}</div>
+                        <div>Location: {character.location.name}</div>
+                    </div>
+                    <BackButton />
+                </>
             }
-            <BackButton />
         </div>
     );
 }

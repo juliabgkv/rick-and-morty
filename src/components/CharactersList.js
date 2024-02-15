@@ -14,7 +14,7 @@ function CharactersList(props) {
                     />
                 ))}
         </FadeIn>
-        {props.totalItems > 0 && 
+        {props.totalItems > 20 && 
             <Pagination 
                 activePage={props.page}
                 itemsCountPerPage={20}

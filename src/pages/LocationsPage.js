@@ -4,11 +4,13 @@ import paginationStyles from './Pagination.module.css';
 import LocationCard from '../components/LocationCard';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import Pagination from 'react-js-pagination';
+import LoadingSpinner from '../components/UI/LoadingSpinner';
 
 function LocationsPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
+  const [loading, setLoading] = useState(false);
 
   const [locations, setLocations] = useState([]);
   const [pagesInfo, setPagesInfo] = useState({});
@@ -16,6 +18,7 @@ function LocationsPage() {
 
   useEffect((() => {
     async function fetchLocations() {
+      setLoading(true);
       const url = `https://rickandmortyapi.com/api/location?page=${page}`;
       const response = await fetch(url);
       const data = await response.json();
@@ -25,6 +28,7 @@ function LocationsPage() {
       } else if(data.results) {
         setPagesInfo({ count: data.info.count, pages: data.info.pages });
         setLocations(data.results);
+        setLoading(false);
       }
     }
 
@@ -44,31 +48,36 @@ function LocationsPage() {
 
   return (
     <>
-      <FadeIn className={'flex-container'}>
-        {locations && locations.map(location => (
-          <LocationCard key={location.id} location={location}/>
-        ))}
-      </FadeIn>
-      {pagesInfo.count > 0 && 
-        <Pagination
-          activePage={page}
-          itemsCountPerPage={20}
-          totalItemsCount={pagesInfo.count}
-          pageRangeDisplayed={pagesInfo.pages}
-          onChange={handlePageChange}
-          hideDisabled={true}
-          innerClass={paginationStyles.pagination}
-          linkClass={paginationStyles.link}
-          prevPageText={'< Prev'}
-          nextPageText={'Next >'}
-          firstPageText={'First page'}
-          lastPageText={'Last page'}
-          activeLinkClass={paginationStyles['active-page']}
-          linkClassFirst={paginationStyles['btn-first-page']}
-          linkClassLast={paginationStyles['btn-last-page']}
-          linkClassPrev={paginationStyles['btn-prev-page']}
-          linkClassNext={paginationStyles['btn-next-page']}
-        />
+      {loading && <LoadingSpinner />}
+      {!loading && locations && 
+        <>
+          <FadeIn className={'flex-container'}>
+            {locations.map(location => (
+              <LocationCard key={location.id} location={location}/>
+            ))}
+          </FadeIn>
+          {pagesInfo &&  
+            <Pagination
+              activePage={page}
+              itemsCountPerPage={20}
+              totalItemsCount={pagesInfo.count}
+              pageRangeDisplayed={pagesInfo.pages}
+              onChange={handlePageChange}
+              hideDisabled={true}
+              innerClass={paginationStyles.pagination}
+              linkClass={paginationStyles.link}
+              prevPageText={'< Prev'}
+              nextPageText={'Next >'}
+              firstPageText={'First page'}
+              lastPageText={'Last page'}
+              activeLinkClass={paginationStyles['active-page']}
+              linkClassFirst={paginationStyles['btn-first-page']}
+              linkClassLast={paginationStyles['btn-last-page']}
+              linkClassPrev={paginationStyles['btn-prev-page']}
+              linkClassNext={paginationStyles['btn-next-page']}
+            />
+          }
+        </>
       }
     </>
   );

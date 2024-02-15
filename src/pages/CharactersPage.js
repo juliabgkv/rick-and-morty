@@ -5,6 +5,7 @@ import Accordion from '../components/Accordion/Accordion';
 import FilterContext from '../context/FilterContext';
 import CharactersList from '../components/CharactersList';
 import styles from './CharactersPage.module.css';
+import LoadingSpinner from '../components/UI/LoadingSpinner';
 
 function CharactersPage() {
     const location = useLocation();
@@ -91,12 +92,7 @@ function CharactersPage() {
             <div className={styles['main-content']}>
                 <Accordion resetFilters={handleResetFilters} />
                 <div className={styles['right-side']}>
-                    {loading ? 
-                        <div className={styles['loader-container']}>
-                            <span className={styles.loader}></span>
-                        </div>
-                    : ''}
-
+                    {loading && <LoadingSpinner />}
                     <CharactersList 
                         characters={characters}
                         page={filter.currentPage}
