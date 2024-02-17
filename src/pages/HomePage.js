@@ -13,6 +13,7 @@ function HomePage() {
           <a 
             href='https://rickandmortyapi.com/' 
             target='_blank'
+            rel="noreferrer"
             className={styles.link}
           > The Rick and Morty API</a>
         </p>
@@ -21,6 +22,7 @@ function HomePage() {
             <a 
               href='https://github.com/juliabgkv' 
               target='_blank' 
+              rel="noreferrer"
               className={styles.link}
             ><div className={styles['git-link']}><img src={gitIcon} alt='GitHub Icon' /> juliabgkv</div></a>
         </p>
