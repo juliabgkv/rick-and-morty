@@ -1,5 +1,56 @@
-.main {
+.home {
+    font-family: 'Josefin Sans', sans-serif;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: center;
+    color: #fff;
+    min-height: 500px;
+    padding: 2rem 3rem;
+}
+
+.explore-btn {
+    font-family: 'Archivo Black', sans-serif;
+    border: 2px dashed #8b8b8b;
+    background-color: #000;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    transition: .15s ease-in-out;
+}
+
+.explore-btn:hover {
+    border: 2px solid #00AFC7;
+    background-color: #00AFC7;
+}
+
+.footer-info {
+    margin-top: 9rem;
+}
+
+.link {
+    font-family: 'Archivo Black', sans-serif;
+    color: #8FC748;
+    transition: .15s ease-in-out;
+}
+
+.link:hover {
+    color: #fff;
+}
+
+.created-info {
     display: flex;
     justify-content: center;
-    margin: 2rem 3rem;
+    align-items: center;
+}
+
+.git-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.git-link > img {
+    width: 30px;
+    height: 30px;
+    padding: 0 10px;
 }
