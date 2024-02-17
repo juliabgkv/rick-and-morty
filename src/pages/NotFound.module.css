@@ -1,0 +1,39 @@
+.container {
+    font-family: 'Archivo Black', sans-serif;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem 1rem;
+}
+
+.container > img {
+    margin-right: 3rem;
+}
+
+.code {
+    font-size: 6rem;
+    color: #C20000;
+}
+
+.top-message {
+    font-size: 2rem;
+}
+
+.footer-message {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #8b8b8b;
+    margin: .5rem 0 2rem;
+}
+
+.link {
+    background: url(../assets/icons8-arrow-50.png) no-repeat;
+    background-position: right;
+    background-size: 40px;
+    padding-right: 50px;
+    transition: .2s ease-in-out;
+}
+
+.link:hover {
+    padding-right: 55px;
+}
