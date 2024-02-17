@@ -56,7 +56,7 @@ function LocationsPage() {
               <LocationCard key={location.id} location={location}/>
             ))}
           </FadeIn>
-          {pagesInfo &&  
+          {pagesInfo.count &&  
             <Pagination
               activePage={page}
               itemsCountPerPage={20}

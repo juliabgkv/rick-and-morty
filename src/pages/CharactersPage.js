@@ -6,6 +6,7 @@ import FilterContext from '../context/FilterContext';
 import CharactersList from '../components/CharactersList';
 import styles from './CharactersPage.module.css';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
+import FilterSettings from '../components/FilterSettings/FilterSettings';
 
 function CharactersPage() {
     const location = useLocation();
@@ -74,20 +75,43 @@ function CharactersPage() {
         navigate({ search: queryParams.toString() });
     }
 
-    function handleResetFilters() {
-        queryParams.delete('gender');
-        queryParams.delete('status');
-        queryParams.delete('species');
+    function handleResetFilters(paramName) {
+        if(paramName) {
+            queryParams.delete(paramName);
+        } else {
+            queryParams.delete('gender');
+            queryParams.delete('status');
+            queryParams.delete('species');
+        }
+        
         queryParams.set('page', 1);
         navigate({ search: queryParams.toString() });
     }
+
 
     return (
         <FilterContext.Provider value={{ filter, handleFilters }}>
             <SearchBar search={handleSearch} />
 
-            {!loading && pagesInfo.count && <div className={styles['search-result-message']}>Found {pagesInfo.count} characters</div>}
-            {!loading && !pagesInfo.count && <div className={styles['search-result-message']}>There is nothing here</div>}
+            {!loading && (filter.name || filter.gender || filter.species || filter.status) &&
+                <FilterSettings 
+                    name={filter.name}
+                    gender={filter.gender}
+                    species={filter.species}
+                    status={filter.status}
+                    resetFilters={handleResetFilters}
+                />
+            }
+
+            {!loading && (pagesInfo.count ? 
+                <div className={styles['search-result-message']}>
+                    Found {pagesInfo.count} characters
+                </div>
+                :
+                <div className={styles['search-result-message']}>
+                    There is nothing here
+                </div>
+            )}
 
             <div className={styles['main-content']}>
                 <Accordion resetFilters={handleResetFilters} />

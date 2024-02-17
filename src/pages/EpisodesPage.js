@@ -34,7 +34,7 @@ function EpisodesPage() {
   return (
     <div className={'flex-container'}>
         {loading && <LoadingSpinner />}
-        {episodes && episodes.map(episode => (
+        {!loading && episodes && episodes.map(episode => (
           <Card key={episode.id} className={styles['episode-card']}>
             <div className={styles['episode-name']}>{episode.name}</div>
             <div className={styles['episode-date']}>{episode.air_date}</div>

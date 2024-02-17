@@ -1,0 +1,10 @@
+.filter-selection {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    border: 2px solid #8b8b8b;
+    padding: .4rem 1rem;
+    margin-left: 10px;
+}

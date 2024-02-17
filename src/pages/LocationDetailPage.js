@@ -57,10 +57,8 @@ function LocationDetailPage() {
                         
                     <BackButton />
                     </div>
-                    {loadingResidents &&
-                        <LoadingSpinner />
-                    }
-                    {residents && 
+                    {loadingResidents && <LoadingSpinner />}
+                    {!loadingResidents && residents && 
                         <CharactersList 
                             characters={residents}
                             totalItems={0}

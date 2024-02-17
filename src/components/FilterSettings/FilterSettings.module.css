@@ -1,0 +1,18 @@
+.filter-settings {
+    display: flex;
+    justify-content: center;
+    margin: .5rem 1rem;
+}
+
+.name-filter-message {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #fff;
+    margin: auto;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 2px solid #8b8b8b;
+    padding: .4rem 1rem;
+}
