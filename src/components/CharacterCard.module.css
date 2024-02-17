@@ -3,8 +3,8 @@
     position: relative;
     padding: 1rem;
     margin: 1rem;
-    width: 270px;
-    height: 360px;
+    width: 225px;
+    height: 290px;
     transition: all .2s ease-in-out;
 }
 
@@ -15,16 +15,16 @@
     left: 0;
     right: 0;
     margin: auto;
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     overflow: hidden;
 }
 
 .character-card .logo img {
     position: absolute;
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     transition: all .2s ease-in-out;
 }
 
@@ -32,7 +32,7 @@
     font-family: 'Josefin Sans', sans-serif;
     text-align: center;
     border: 2px dashed #8b8b8b;
-    padding-top: 150px;
+    padding-top: 100px;
     color: #b6b6b6;
     position: absolute;
     bottom: 0;

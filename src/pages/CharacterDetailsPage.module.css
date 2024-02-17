@@ -4,19 +4,26 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    padding: 4rem 2rem;
+    padding: 2rem 2rem;
 }
 
 .character-details-card {
     font-family: 'Josefin Sans', sans-serif;
     border: 2px dashed #8b8b8b;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
     background-color: #000;
     border-radius: 10px;
     padding: 2rem;
     margin: 0 1rem 3rem;
 }
 
-.character-details-card > div { 
+.character-info {
+    margin-left: 2rem;
+}
+
+.character-info > div { 
     margin-bottom: .5rem;
 }
 

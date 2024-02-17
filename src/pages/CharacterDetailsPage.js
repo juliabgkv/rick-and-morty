@@ -35,12 +35,14 @@ function CharacterDetailsPage() {
                             alt={character.name} 
                             className={styles['character-img']}
                         />
-                        <div className={styles['character-name']}>{character.name}</div>
-                        <div>Status: {character.status}</div>
-                        <div>Specie: {character.species}</div>
-                        <div>Gender: {character.gender}</div>
-                        <div>Origin: {character.origin.name}</div>
-                        <div>Location: {character.location.name}</div>
+                        <div className={styles['character-info']}>
+                            <div className={styles['character-name']}>{character.name}</div>
+                            <div>Status: {character.status}</div>
+                            <div>Specie: {character.species}</div>
+                            <div>Gender: {character.gender}</div>
+                            <div>Origin: {character.origin.name}</div>
+                            <div>Location: {character.location.name}</div>
+                        </div>
                     </div>
                     <BackButton />
                 </>

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import paginationStyles from './Pagination.module.css';
 import LocationCard from '../components/LocationCard';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import Pagination from 'react-js-pagination';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
+import paginationStyles from './Pagination.module.css';
+import styles from './LocationDetailPage.module.css';
 
 function LocationsPage() {
   const location = useLocation();
@@ -50,7 +51,7 @@ function LocationsPage() {
     <>
       {loading && <LoadingSpinner />}
       {!loading && locations && 
-        <>
+        <div style={{'max-width': '1265px', margin: 'auto'}}>
           <FadeIn className={'flex-container'}>
             {locations.map(location => (
               <LocationCard key={location.id} location={location}/>
@@ -77,7 +78,7 @@ function LocationsPage() {
               linkClassNext={paginationStyles['btn-next-page']}
             />
           }
-        </>
+        </div>
       }
     </>
   );
