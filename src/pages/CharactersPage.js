@@ -41,8 +41,8 @@ function CharactersPage() {
             const data = await response.json();
 
             if(data.error) {
-                setPagesInfo({ pages: 1, count: 0 });
-                setCharacters(null);
+                console.error(data.error);
+                setLoading(false);
             } else if(data.results) {
                 setCharacters(data.results);
                 setPagesInfo({ 

@@ -5,13 +5,13 @@ import FadeIn from 'react-fade-in/lib/FadeIn';
 import Pagination from 'react-js-pagination';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 import paginationStyles from './Pagination.module.css';
-import styles from './LocationDetailPage.module.css';
 
 function LocationsPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const [locations, setLocations] = useState([]);
   const [pagesInfo, setPagesInfo] = useState({});
@@ -25,7 +25,8 @@ function LocationsPage() {
       const data = await response.json();
   
       if(data.error) {
-        console.log(data.error);
+        setError(data.error);
+        setLoading(false);
       } else if(data.results) {
         setPagesInfo({ count: data.info.count, pages: data.info.pages });
         setLocations(data.results);
@@ -51,7 +52,7 @@ function LocationsPage() {
     <>
       {loading && <LoadingSpinner />}
       {!loading && locations && 
-        <div style={{'max-width': '1265px', margin: 'auto'}}>
+        <div style={{'maxWidth': '1265px', margin: 'auto'}}>
           <FadeIn className={'flex-container'}>
             {locations.map(location => (
               <LocationCard key={location.id} location={location}/>
@@ -80,6 +81,7 @@ function LocationsPage() {
           }
         </div>
       }
+      {error && <p className='error-message'>{error}</p>}
     </>
   );
 }

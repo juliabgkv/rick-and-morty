@@ -11,6 +11,7 @@ function LocationDetailPage() {
     const [residents, setResidents] = useState([]);
     const [loading, setLoading] = useState(false);
     const [loadingResidents, setLoadingresidents] = useState(false);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         async function fetchLocationDetails() {
@@ -19,21 +20,28 @@ function LocationDetailPage() {
             const response = await fetch(`https://rickandmortyapi.com/api/location/${params.locationId}`);
             const data = await response.json();
 
-            setLocationInfo({ 
-                name: data.name, 
-                type: data.type, 
-                dimension: data.dimension,
-                residentsCount: data.residents.length
-            });
-            setLoading(false);
-            
-            let residentsData = await Promise.all(
-                data.residents.map(residentUrl => {
-                    return fetch(residentUrl).then(res => res.json());
-                })
-            );
-            setResidents(residentsData);
-            setLoadingresidents(false);
+            if(data.error) {
+                console.error(data.error);
+                setLoading(false);
+                setLoadingresidents(false);
+                setError(data.error);
+            } else {
+                setLocationInfo({ 
+                    name: data.name, 
+                    type: data.type, 
+                    dimension: data.dimension,
+                    residentsCount: data.residents.length
+                });
+                setLoading(false);
+                
+                let residentsData = await Promise.all(
+                    data.residents.map(residentUrl => {
+                        return fetch(residentUrl).then(res => res.json());
+                    })
+                );
+                setResidents(residentsData);
+                setLoadingresidents(false);
+            }
         }
 
         fetchLocationDetails();
@@ -66,6 +74,7 @@ function LocationDetailPage() {
                     }
                 </div>
             }
+            {error && <p className='error-message'>{error}</p>}
         </>
     );
 }

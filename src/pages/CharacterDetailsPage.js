@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import BackButton from '../components/UI/BackButton';
-import styles from './CharacterDetailsPage.module.css';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
+import styles from './CharacterDetailsPage.module.css';
 
 function CharacterDetailsPage() {
    const params = useParams();
    const [character, setCharacter] = useState();
    const [loading, setLoading] = useState(false);
+   const [error, setError] = useState('');
 
    useEffect(() => {
         async function fetchCharacter() {
@@ -16,10 +17,15 @@ function CharacterDetailsPage() {
             const response = await fetch(`https://rickandmortyapi.com/api/character/${params.characterId}`);
             const data = await response.json();
 
-            setCharacter(data);
-            document.title = data.name;
-            
-            setLoading(false);
+            if(data.error) {
+                setError(data.error);
+                setLoading(false);
+            } else {
+                setCharacter(data);
+                document.title = data.name;
+                
+                setLoading(false);
+            }
         }
         fetchCharacter();
    }, []);
@@ -47,6 +53,7 @@ function CharacterDetailsPage() {
                     <BackButton />
                 </>
             }
+            {error && <p className='error-message'>{error}</p>}
         </div>
     );
 }

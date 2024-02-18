@@ -40,3 +40,11 @@ a {
 .reset-filter-btn:hover {
     background-size: 15px 15px;
 }
+
+.error-message {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.3rem;
+    color: #565656;
+    text-align: center;
+    padding: 3rem 1rem;
+}

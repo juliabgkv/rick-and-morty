@@ -6,6 +6,7 @@ import LoadingSpinner from '../components/UI/LoadingSpinner';
 function EpisodesPage() {
   const [episodes, setEpisodes] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     async function fetchEpisodes() {
@@ -13,19 +14,24 @@ function EpisodesPage() {
       let response = await fetch('https://rickandmortyapi.com/api/episode');
       let data = await response.json();
 
-      let episodesArr = data.results;
-      let nextUrl = data.info.next;
-
-      while(nextUrl) {
-        response = await fetch(nextUrl);
-        data = await response.json();
-
-        episodesArr = episodesArr.concat(data.results);
-        nextUrl = data.info.next;
+      if(data.error) {
+        setError(data.error);
+        setLoading(false);
+      } else {
+        let episodesArr = data.results;
+        let nextUrl = data.info.next;
+  
+        while(nextUrl) {
+          response = await fetch(nextUrl);
+          data = await response.json();
+  
+          episodesArr = episodesArr.concat(data.results);
+          nextUrl = data.info.next;
+        }
+        
+        setEpisodes(episodesArr);
+        setLoading(false);
       }
-      
-      setEpisodes(episodesArr);
-      setLoading(false);
     }
 
     fetchEpisodes();
@@ -41,6 +47,7 @@ function EpisodesPage() {
             <div className={styles['episode']}>{episode.episode}</div>
           </Card>
         ))}
+        {error && <p className='error-message'>{error}</p>}
     </div>
   );
 }
