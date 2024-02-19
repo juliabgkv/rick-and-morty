@@ -4,9 +4,10 @@ import SearchBar from '../components/UI/SearchBar';
 import Accordion from '../components/Accordion/Accordion';
 import FilterContext from '../context/FilterContext';
 import CharactersList from '../components/CharactersList';
-import styles from './CharactersPage.module.css';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 import FilterSettings from '../components/FilterSettings/FilterSettings';
+import API_URL from '../helpers/apiUrl';
+import styles from './CharactersPage.module.css';
 
 function CharactersPage() {
     const location = useLocation();
@@ -33,10 +34,10 @@ function CharactersPage() {
         setCharacters(null);
         setPagesInfo({ pages: 1, count: 0 });
 
-        document.title = `Rick And Morty | Characters | Page ${filter.currentPage}`;
+        document.title = `Characters | Page ${filter.currentPage}`;
 
         async function fetchCharacters() {
-            const url = `https://rickandmortyapi.com/api/character/${location.search}`;
+            const url = `${API_URL}character/${location.search}`;
             const response = await fetch(url);
             const data = await response.json();
 
@@ -91,38 +92,40 @@ function CharactersPage() {
 
     return (
         <FilterContext.Provider value={{ filter, handleFilters }}>
-            <SearchBar search={handleSearch} />
+            <div className='wrapper'>
+                <SearchBar search={handleSearch} />
 
-            {!loading && (filter.name || filter.gender || filter.species || filter.status) &&
-                <FilterSettings 
-                    name={filter.name}
-                    gender={filter.gender}
-                    species={filter.species}
-                    status={filter.status}
-                    resetFilters={handleResetFilters}
-                />
-            }
-
-            {!loading && (pagesInfo.count ? 
-                <div className={styles['search-result-message']}>
-                    Found {pagesInfo.count} characters
-                </div>
-                :
-                <div className={styles['search-result-message']}>
-                    There is nothing here
-                </div>
-            )}
-
-            <div className={styles['main-content']}>
-                <Accordion resetFilters={handleResetFilters} />
-                <div className={styles['right-side']}>
-                    {loading && <LoadingSpinner />}
-                    <CharactersList 
-                        characters={characters}
-                        page={filter.currentPage}
-                        totalItems={pagesInfo.count}
-                        handlePageChange={handlePageChange}
+                {!loading && (filter.name || filter.gender || filter.species || filter.status) &&
+                    <FilterSettings 
+                        name={filter.name}
+                        gender={filter.gender}
+                        species={filter.species}
+                        status={filter.status}
+                        resetFilters={handleResetFilters}
                     />
+                }
+
+                {!loading && (pagesInfo.count ? 
+                    <div className={styles['search-result-message']}>
+                        Found {pagesInfo.count} characters
+                    </div>
+                    :
+                    <div className={styles['search-result-message']}>
+                        There is nothing here
+                    </div>
+                )}
+
+                <div className={styles['main-content']}>
+                    <Accordion resetFilters={handleResetFilters} />
+                    <div className={styles['right-side']}>
+                        {loading && <LoadingSpinner />}
+                        <CharactersList 
+                            characters={characters}
+                            page={filter.currentPage}
+                            totalItems={pagesInfo.count}
+                            handlePageChange={handlePageChange}
+                        />
+                    </div>
                 </div>
             </div>
         </FilterContext.Provider>

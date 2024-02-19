@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import CharactersList from '../components/CharactersList';
 import BackButton from '../components/UI/BackButton';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
+import API_URL from '../helpers/apiUrl';
 import styles from './LocationDetailPage.module.css';
 
 function LocationDetailPage() {
@@ -14,10 +15,11 @@ function LocationDetailPage() {
     const [error, setError] = useState('');
 
     useEffect(() => {
+        document.title = 'Location';
         async function fetchLocationDetails() {
             setLoading(true);
             setLoadingresidents(true);
-            const response = await fetch(`https://rickandmortyapi.com/api/location/${params.locationId}`);
+            const response = await fetch(`${API_URL}location/${params.locationId}`);
             const data = await response.json();
 
             if(data.error) {
@@ -32,6 +34,7 @@ function LocationDetailPage() {
                     dimension: data.dimension,
                     residentsCount: data.residents.length
                 });
+                document.title = data.name;
                 setLoading(false);
                 
                 let residentsData = await Promise.all(
@@ -48,7 +51,7 @@ function LocationDetailPage() {
     }, []);
 
     return (
-        <>
+        <div className='wrapper'>
             {loading && <LoadingSpinner />}
             {!loading && locationInfo &&
                 <div className={styles.container}>
@@ -75,7 +78,7 @@ function LocationDetailPage() {
                 </div>
             }
             {error && <p className='error-message'>{error}</p>}
-        </>
+        </div>
     );
 }
 

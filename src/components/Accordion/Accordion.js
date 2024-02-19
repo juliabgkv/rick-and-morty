@@ -1,4 +1,3 @@
-import React from 'react';
 import AccordionItem from './AccordionItem';
 import FILTERS from '../../helpers/filters';
 import styles from './Accordion.module.css';

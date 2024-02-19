@@ -1,4 +1,4 @@
-export default [
+const filters =  [
     {
         id: 1,
         filterName: 'gender',
@@ -36,3 +36,5 @@ export default [
         ]
     },
 ];
+
+export default filters;

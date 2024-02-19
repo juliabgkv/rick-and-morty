@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import RootLayout from './components/RootLayout';
 import CharactersPage from './pages/CharactersPage';
 import LocationsPage from './pages/LocationsPage';

@@ -26,11 +26,11 @@
     border: 2px solid #B3D24C;
 }
 
-.reset-btn {
+.search-btn {
     font-family: 'Archivo Black', sans-serif;
     padding: .5rem .8rem;
     height: 38px;
-    width: 20%;
+    width: 90px;
     border-radius: 5px;
     border: 2px solid #fff;
     color: #fff;
@@ -39,6 +39,23 @@
     transition: all .2s ease-in-out;
 }
 
-.reset-btn:hover {
+.search-btn:hover {
     background-color: #00AFC7;
+}
+
+@media (max-width: 430px) {
+    .search-form {
+        width: 90%;
+    }
+
+    .search-input {
+        width: 70%;
+    }
+
+    .search-btn {
+        display: flex;
+        justify-content: center;
+        width: 70px;
+    }
+
 }

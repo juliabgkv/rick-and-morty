@@ -35,3 +35,15 @@
 .pagination .btn-last-page:hover {
     background-color: #00AFC7;
 }
+
+@media (max-width: 600px) {
+    .pagination {
+        flex-direction: column;
+    }
+    
+    .pagination .btn-first-page,
+    .pagination .btn-last-page {
+        background-color: transparent;
+        color: #8b8b8b;
+    }
+}

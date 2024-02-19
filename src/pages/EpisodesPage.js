@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import styles from '../pages/EpisodesPage.module.css';
 import Card from '../components/Wrappers/Card';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
+import API_URL from '../helpers/apiUrl';
+import styles from '../pages/EpisodesPage.module.css';
 
 function EpisodesPage() {
   const [episodes, setEpisodes] = useState([]);
@@ -9,9 +10,11 @@ function EpisodesPage() {
   const [error, setError] = useState('');
 
   useEffect(() => {
+    document.title = 'Episodes';
+    
     async function fetchEpisodes() {
       setLoading(true);
-      let response = await fetch('https://rickandmortyapi.com/api/episode');
+      let response = await fetch(`${API_URL}episode`);
       let data = await response.json();
 
       if(data.error) {
@@ -38,7 +41,7 @@ function EpisodesPage() {
   }, []);
 
   return (
-    <div className={'flex-container'}>
+    <div className={'flex-container wrapper'}>
         {loading && <LoadingSpinner />}
         {!loading && episodes && episodes.map(episode => (
           <Card key={episode.id} className={styles['episode-card']}>

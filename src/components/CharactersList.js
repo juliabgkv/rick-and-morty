@@ -19,13 +19,13 @@ function CharactersList(props) {
                 activePage={props.page}
                 itemsCountPerPage={20}
                 totalItemsCount={props.totalItems}
-                pageRangeDisplayed={7}
+                pageRangeDisplayed={3}
                 onChange={props.handlePageChange}
                 hideDisabled={true}
                 prevPageText={'< Prev'}
                 nextPageText={'Next >'}
-                firstPageText={'First page'}
-                lastPageText={'Last page'}
+                firstPageText={'<< First page'}
+                lastPageText={'Last page >>'}
                 innerClass={paginationStyles.pagination}
                 linkClass={paginationStyles.link}
                 activeLinkClass={paginationStyles['active-page']}

@@ -1,4 +1,3 @@
-import React from 'react';
 import useToggle from '../../hooks/useToggle';
 import FilterForm from './FilterForm';
 import styles from './AccordionItem.module.css';

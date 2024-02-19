@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './SearchBar.module.css';
 
 function SearchBar({ search }) {
@@ -25,7 +25,7 @@ function SearchBar({ search }) {
                 placeholder='Type here to search character...'
                 className={styles['search-input']}
             />
-            <button className={styles['reset-btn']}>Search</button>
+            <button className={styles['search-btn']}>Search</button>
         </form>
     );
 }

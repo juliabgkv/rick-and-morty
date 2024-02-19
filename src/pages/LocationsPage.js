@@ -4,6 +4,7 @@ import LocationCard from '../components/LocationCard';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import Pagination from 'react-js-pagination';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
+import API_URL from '../helpers/apiUrl';
 import paginationStyles from './Pagination.module.css';
 
 function LocationsPage() {
@@ -17,10 +18,16 @@ function LocationsPage() {
   const [pagesInfo, setPagesInfo] = useState({});
   const [page, setPage] = useState(Number(queryParams.get('page')) || 1);
 
+  useEffect(() => {
+    document.title = `Locations | Page ${page}`;
+  }, []);
+
   useEffect((() => {
+    document.title = `Locations | Page ${page}`;
+    
     async function fetchLocations() {
       setLoading(true);
-      const url = `https://rickandmortyapi.com/api/location?page=${page}`;
+      const url = `${API_URL}location?page=${page}`;
       const response = await fetch(url);
       const data = await response.json();
   
@@ -49,7 +56,7 @@ function LocationsPage() {
   }
 
   return (
-    <>
+    <div className='wrapper'>
       {loading && <LoadingSpinner />}
       {!loading && locations && 
         <div style={{'maxWidth': '1265px', margin: 'auto'}}>
@@ -82,7 +89,7 @@ function LocationsPage() {
         </div>
       }
       {error && <p className='error-message'>{error}</p>}
-    </>
+    </div>
   );
 }
 

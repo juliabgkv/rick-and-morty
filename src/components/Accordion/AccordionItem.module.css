@@ -4,6 +4,7 @@
     background-color: #393939;
     padding: 10px 15px;
     cursor: pointer;
+    text-align: center;
 }
 
 .accordion-item-btn::after {

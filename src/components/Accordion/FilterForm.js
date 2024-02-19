@@ -1,4 +1,3 @@
-import React from 'react';
 import { useContext } from 'react';
 import FilterContext from '../../context/FilterContext';
 import styles from './FilterForm.module.css';

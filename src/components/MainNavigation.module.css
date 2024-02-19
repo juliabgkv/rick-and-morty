@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
 .top-bar {
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,4 +45,125 @@
     color: #8FC748;
     background-color: transparent;
     border: 2px dashed #8b8b8b;
+}
+
+/* === Burger menu styles === */
+
+.checkbox-toggler {
+    display: none;
+}
+
+.menu-button-container {
+    display: none;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+    display: block;
+    background-color: #8FC748;
+    position: absolute;
+    height: 4px;
+    width: 30px;
+    border-radius: 2px;
+    transition: transform 400ms cubic-bezier(.23, 1, .32, 1);
+}
+
+.menu-button::before {
+    content: '';
+    margin-top: -8px;
+}
+
+.menu-button::after {
+    content: '';
+    margin-top: 8px;
+}
+
+.checkbox-toggler:checked + .menu-button-container .menu-button::before {
+    margin-top: 0px;
+    transform: rotate(405deg);
+}
+  
+.checkbox-toggler:checked + .menu-button-container .menu-button {
+    background: rgba(255, 255, 255, 0);
+}
+  
+.checkbox-toggler:checked + .menu-button-container .menu-button::after {
+    margin-top: 0px;
+    transform: rotate(-405deg);
+}
+
+@media (max-width: 1000px) {
+    .top-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .logo {
+        width: 200px;
+        height: auto;
+    }
+    .menu-button-container {
+        display: flex;
+    }
+
+    .navigation {
+        z-index: 1000;
+        position: absolute;
+        top: 105px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        background-color: #000;
+    }
+
+    .navigation a {
+        overflow: hidden;
+        background-color: transparent;
+        margin-bottom: 1rem;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    .navigation a:not(:last-of-type) {
+        margin-right: 0;
+    }
+    
+    .navigation a:hover {
+        background-color: #00AFC7;
+    }
+    
+    .navigation a[class="active"] {
+        color: #fff;
+        background-color: #8FC748;
+        border: none;
+    }
+    
+    .checkbox-toggler:checked ~ .navigation {
+        padding: 2rem 0;
+    }
+
+    .checkbox-toggler:checked ~ .navigation a {
+        border: 1px solid #333;
+        height: 1.5rem;
+        padding: 0.5rem 1rem;
+        margin-bottom: 1rem;
+        border: none;
+        border: 1px solid #8b8b8b;
+    }
 }

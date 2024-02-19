@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import BackButton from '../components/UI/BackButton';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
+import API_URL from '../helpers/apiUrl';
 import styles from './CharacterDetailsPage.module.css';
 
 function CharacterDetailsPage() {
@@ -11,10 +12,11 @@ function CharacterDetailsPage() {
    const [error, setError] = useState('');
 
    useEffect(() => {
+        document.title = 'Character';
         async function fetchCharacter() {
             setLoading(true);
 
-            const response = await fetch(`https://rickandmortyapi.com/api/character/${params.characterId}`);
+            const response = await fetch(`${API_URL}character/${params.characterId}`);
             const data = await response.json();
 
             if(data.error) {
@@ -31,7 +33,7 @@ function CharacterDetailsPage() {
    }, []);
 
     return (
-        <div className={styles['character-details']}>
+        <div className={`${styles['character-details']} wrapper`}>
             {loading && <LoadingSpinner />}
             {character && 
                 <>

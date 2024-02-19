@@ -6,6 +6,7 @@ html, body {
 }
 
 body {
+    min-width: 290px;
     background-color: #131313;
 }
 
@@ -22,7 +23,7 @@ a {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 2rem 1rem;
+    padding: 1rem 1rem;
 }
 
 .reset-filter-btn {
@@ -47,4 +48,10 @@ a {
     color: #565656;
     text-align: center;
     padding: 3rem 1rem;
+}
+
+@media (max-width: 1000px) {
+    .wrapper {
+        margin-top: 135px;
+    }
 }
