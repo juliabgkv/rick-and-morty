@@ -11,7 +11,7 @@ function NotFound() {
   return (
     <div className={styles.container}>
       <img src={image} alt='Rick And Morty' />
-      <div>
+      <div className={styles['text-container']}>
           <div className={styles.code}>404</div>
           <div className={styles['top-message']}>Ooops! Something is missing.</div>
           <div className={styles['footer-message']}>This page is missing or you assembled the link incorrectly.</div>
