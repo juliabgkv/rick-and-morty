@@ -1,9 +1,35 @@
-.option-label {
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5px;
+}
+
+.option  {
     font-family: 'Josefin Sans', sans-serif;
+    margin: 5px;
+    padding: 5px 10px;
+    border: 2px solid #8b8b8b;
+    border-radius: 5px;
     cursor: pointer;
     transition: .15s ease-in-out;
 }
 
-.option-label:hover {
-    color: #8b8b8b;
+.option:hover {
+    background-color: #00AFC7;
+    border-color: #00AFC7;
+}
+
+.option.active-option {
+    background-color: #B3D24C;
+    border-color: #B3D24C;
+    color: #131313;
+}
+
+.option-input {
+    display: none;
+}
+
+.option-label {
+    cursor: pointer;
 }

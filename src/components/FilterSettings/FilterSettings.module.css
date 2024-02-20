@@ -1,7 +1,12 @@
 .filter-settings {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin: .5rem 1rem;
+}
+
+.filter-settings > div {
+    margin-bottom: 10px;
 }
 
 .name-filter-message {

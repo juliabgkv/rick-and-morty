@@ -29,5 +29,5 @@
 }
 
 .accordion-item.active .accordion-item-body {
-    max-height: 200px;
+    max-height: 350px;
 }

@@ -2,7 +2,7 @@ import useToggle from '../../hooks/useToggle';
 import FilterForm from './FilterForm';
 import styles from './AccordionItem.module.css';
 
-function AccordionItem({ filterName, options, filterFormRef }) {
+function AccordionItem({ filterName, options }) {
     const [active, toggleActive] = useToggle(false);
 
     return (

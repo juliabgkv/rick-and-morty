@@ -10,18 +10,24 @@ function FilterForm({ filterName, options }) {
     }
 
     return (
-        <form onSubmit = {e => e.preventDefault()}>
+        <form 
+            onSubmit = {e => e.preventDefault()} 
+            className={styles.form}
+        >
             {options.map(option => (
-                <div key={option}>
-                    <label className={styles['option-label']}>
-                        <input 
-                            type='radio' 
-                            id={option} 
-                            value={option} 
-                            onChange={handleOptionChange}
-                            checked={filter[filterName] === option}
-                            className={styles['option-input']}
-                        />
+                <div 
+                    key={option} 
+                    className={`${styles.option} ${filter[filterName] === option ? styles['active-option'] : ''}`}
+                >
+                    <input 
+                        type='radio' 
+                        id={option + filterName} 
+                        value={option} 
+                        onChange={handleOptionChange}
+                        checked={filter[filterName] === option}
+                        className={styles['option-input']}
+                    />
+                    <label htmlFor={option + filterName} className={styles['option-label']}>
                         {option[0].toUpperCase() + option.substring(1)}
                     </label>
                 </div>

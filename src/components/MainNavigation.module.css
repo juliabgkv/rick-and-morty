@@ -111,6 +111,7 @@
         width: 200px;
         height: auto;
     }
+
     .menu-button-container {
         display: flex;
     }
@@ -160,8 +161,10 @@
 
     .checkbox-toggler:checked ~ .navigation a {
         border: 1px solid #333;
-        height: 1.5rem;
+        height: 30px;
         padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
         margin-bottom: 1rem;
         border: none;
         border: 1px solid #8b8b8b;
