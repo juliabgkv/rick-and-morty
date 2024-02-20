@@ -2,11 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15rem;
+    padding-top: 8rem;
 }
 
 .lds-spinner {
-    color: official;
     display: inline-block;
     position: relative;
     width: 80px;
