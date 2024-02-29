@@ -4,7 +4,7 @@
     padding: 1rem;
     margin: 1rem;
     width: 225px;
-    height: 310px;
+    height: 320px;
     transition: all .2s ease-in-out;
 }
 
@@ -21,7 +21,7 @@
     overflow: hidden;
 }
 
-.character-card .logo img {
+.character-card .logo .character-photo {
     position: absolute;
     width: 200px;
     height: 200px;
@@ -38,7 +38,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    top: 125px;
+    top: 110px;
     background-color: #000;
     border-radius: 10px;
 }
@@ -49,11 +49,17 @@
     margin-bottom: 5px;
 }
 
+.character-card-footer {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .character-card:hover {
     transform: translateY(-15px);
 }
 
-.character-card:hover img {
+.character-card:hover .character-photo {
     transform: scale(1.1);
 }
 

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import BackButton from '../components/UI/BackButton';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
+import GenderBlock from '../components/UI/Blocks/GenderBlock';
+import StatusBlock from '../components/UI/Blocks/StatusBlock';
 import API_URL from '../helpers/apiUrl';
 import styles from './CharacterDetailsPage.module.css';
 
@@ -45,11 +47,13 @@ function CharacterDetailsPage() {
                         />
                         <div className={styles['character-info']}>
                             <div className={styles['character-name']}>{character.name}</div>
-                            <div>Status: {character.status}</div>
-                            <div>Specie: {character.species}</div>
-                            <div>Gender: {character.gender}</div>
-                            <div>Origin: {character.origin.name}</div>
-                            <div>Location: {character.location.name}</div>
+                            <div className={styles['character-specie']}>({character.species})</div>
+                            <div><span className={styles['secondary-text']}>Location:</span> {character.location.name}</div>
+                            <div><span className={styles['secondary-text']}>Origin:</span> {character.origin.name}</div>
+                            <div className={styles['info-flex-wrapper']}>
+                                <GenderBlock gender={character.gender} />
+                                <StatusBlock status={character.status} />
+                            </div>
                         </div>
                     </div>
                     <BackButton />
