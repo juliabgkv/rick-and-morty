@@ -87,4 +87,12 @@
         text-align: center;
         margin-left: 0;
     }
+
+    .character-info > div.character-specie {
+        margin-bottom: 20px;
+    }
+
+    .info-flex-wrapper {
+        margin-top: 25px;
+    }
 }
