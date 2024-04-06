@@ -41,7 +41,7 @@ function EpisodesPage() {
   }, []);
 
   return (
-    <div className={'flex-container wrapper'}>
+    <div className={styles['episodes-container']}>
         {loading && <LoadingSpinner />}
         {!loading && episodes && episodes.map(episode => (
           <Card key={episode.id} className={styles['episode-card']}>

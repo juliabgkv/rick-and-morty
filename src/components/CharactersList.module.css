@@ -1,0 +1,25 @@
+.characters-container {
+    margin: 0 auto;
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+}
+
+@media (max-width: 1400px) {
+    .characters-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1100px) {
+    .characters-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 610px) {
+    .characters-container {
+        grid-template-columns: 1fr;
+    }
+}

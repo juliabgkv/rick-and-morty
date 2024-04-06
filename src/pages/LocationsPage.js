@@ -6,6 +6,7 @@ import Pagination from 'react-js-pagination';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 import API_URL from '../helpers/apiUrl';
 import paginationStyles from './Pagination.module.css';
+import styles from './LocationsPage.module.css';
 
 function LocationsPage() {
   const location = useLocation();
@@ -60,7 +61,7 @@ function LocationsPage() {
       {loading && <LoadingSpinner />}
       {!loading && locations && 
         <div style={{'maxWidth': '1265px', margin: 'auto'}}>
-          <FadeIn className={'flex-container'}>
+          <FadeIn className={styles['locations-container']}>
             {locations.map(location => (
               <LocationCard key={location.id} location={location}/>
             ))}
