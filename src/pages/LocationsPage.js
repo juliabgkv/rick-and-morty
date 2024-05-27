@@ -17,15 +17,12 @@ function LocationsPage() {
 
   const [locations, setLocations] = useState([]);
   const [pagesInfo, setPagesInfo] = useState({});
-  const [page, setPage] = useState(Number(queryParams.get('page')) || 1);
+
+  const page = Number(queryParams.get('page')) || 1;
 
   useEffect(() => {
     document.title = `Locations | Page ${page}`;
-  }, []);
 
-  useEffect((() => {
-    document.title = `Locations | Page ${page}`;
-    
     async function fetchLocations() {
       setLoading(true);
       const url = `${API_URL}location?page=${page}`;
@@ -43,11 +40,7 @@ function LocationsPage() {
     }
 
     fetchLocations();
-  }), [page]);
-
-  useEffect((() => {
-    setPage(Number(queryParams.get('page')) || 1);
-  }), [location.search]);
+  }, [page]);
 
   function handlePageChange(num) {
     queryParams.set('page', num);
