@@ -14,20 +14,17 @@ function CharactersPage() {
     const navigate = useNavigate();
     const queryParams = new URLSearchParams(location.search);
 
-    const [ filter, setFilter ] = useState({});
     const [loading, setLoading] = useState(true);
     const [characters, setCharacters] = useState([]);
     const [pagesInfo, setPagesInfo] = useState({ pages: 1, count: 0 });
 
-    useEffect(() => {
-        setFilter({ 
-            currentPage: Number(queryParams.get('page')) || 1, 
-            name: queryParams.get('name') || '',
-            gender: queryParams.get('gender') || '',
-            status: queryParams.get('status') || '',
-            species: queryParams.get('species') || ''
-        });
-    }, [location.search]);
+    const filter = {
+        currentPage: Number(queryParams.get('page')) || 1, 
+        name: queryParams.get('name') || '',
+        gender: queryParams.get('gender') || '',
+        status: queryParams.get('status') || '',
+        species: queryParams.get('species') || ''
+    };
 
     useEffect(() => {
         setLoading(true);
@@ -55,7 +52,7 @@ function CharactersPage() {
         }
 
         fetchCharacters();
-    }, [filter]);
+    }, [location]);
 
     function handlePageChange(pageNumber) {
         queryParams.set('page', pageNumber);
@@ -88,7 +85,6 @@ function CharactersPage() {
         queryParams.set('page', 1);
         navigate({ search: queryParams.toString() });
     }
-
 
     return (
         <FilterContext.Provider value={{ filter, handleFilters }}>
