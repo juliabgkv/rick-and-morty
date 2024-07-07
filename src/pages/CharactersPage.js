@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import SearchBar from '../components/UI/SearchBar';
 import Accordion from '../components/Accordion/Accordion';
 import FilterContext from '../context/FilterContext';
@@ -10,20 +10,18 @@ import API_URL from '../helpers/apiUrl';
 import styles from './CharactersPage.module.css';
 
 function CharactersPage() {
-    const location = useLocation();
-    const navigate = useNavigate();
-    const queryParams = new URLSearchParams(location.search);
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const [loading, setLoading] = useState(true);
     const [characters, setCharacters] = useState([]);
     const [pagesInfo, setPagesInfo] = useState({ pages: 1, count: 0 });
 
     const filter = {
-        currentPage: Number(queryParams.get('page')) || 1, 
-        name: queryParams.get('name') || '',
-        gender: queryParams.get('gender') || '',
-        status: queryParams.get('status') || '',
-        species: queryParams.get('species') || ''
+        currentPage: Number(searchParams.get('page')) || 1, 
+        name: searchParams.get('name') || '',
+        gender: searchParams.get('gender') || '',
+        status: searchParams.get('status') || '',
+        species: searchParams.get('species') || ''
     };
 
     useEffect(() => {
@@ -34,7 +32,7 @@ function CharactersPage() {
         document.title = `Characters | Page ${filter.currentPage}`;
 
         async function fetchCharacters() {
-            const url = `${API_URL}character/${location.search}`;
+            const url = `${API_URL}character/?${searchParams.toString()}`;
             const response = await fetch(url);
             const data = await response.json();
 
@@ -52,38 +50,47 @@ function CharactersPage() {
         }
 
         fetchCharacters();
-    }, [location]);
+    }, [searchParams]);
 
     function handlePageChange(pageNumber) {
-        queryParams.set('page', pageNumber);
-        navigate({ search: queryParams.toString() });
+        setSearchParams(params => {
+            params.set('page', pageNumber);
+
+            return params;
+        });
 
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
 
     function handleSearch(input) {
-        queryParams.set('page', 1);
-        queryParams.set('name', input);
-        navigate({ search: queryParams.toString() });
+        setSearchParams({
+            page: 1,
+            name: input
+        });
     }
 
     function handleFilters(filterName, value) {
-        queryParams.set(filterName, value);
-        queryParams.set('page', 1);
-        navigate({ search: queryParams.toString() });
+        setSearchParams(params => {
+            params.set(filterName, value);
+            params.set('page', 1);
+
+            return params;
+        });
     }
 
     function handleResetFilters(paramName) {
-        if(paramName) {
-            queryParams.delete(paramName);
-        } else {
-            queryParams.delete('gender');
-            queryParams.delete('status');
-            queryParams.delete('species');
-        }
-        
-        queryParams.set('page', 1);
-        navigate({ search: queryParams.toString() });
+        setSearchParams(params => {
+            if (paramName) {
+                params.delete(paramName);
+            } else {
+                params.delete('gender');
+                params.delete('status');
+                params.delete('species');
+            }
+            params.set('page', 1);
+
+            return params;
+        });
     }
 
     return (

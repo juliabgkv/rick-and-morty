@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import LocationCard from '../components/LocationCard';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import Pagination from 'react-js-pagination';
@@ -9,16 +9,14 @@ import paginationStyles from './Pagination.module.css';
 import styles from './LocationsPage.module.css';
 
 function LocationsPage() {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const queryParams = new URLSearchParams(location.search);
+  const [searchParams, setSearchParams] = useSearchParams();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const [locations, setLocations] = useState([]);
   const [pagesInfo, setPagesInfo] = useState({});
 
-  const page = Number(queryParams.get('page')) || 1;
+  const page = Number(searchParams.get('page')) || 1;
 
   useEffect(() => {
     document.title = `Locations | Page ${page}`;
@@ -40,11 +38,14 @@ function LocationsPage() {
     }
 
     fetchLocations();
-  }, [page]);
+  }, [searchParams]);
 
   function handlePageChange(num) {
-    queryParams.set('page', num);
-    navigate({ search: queryParams.toString() });
+    setSearchParams(params => {
+      params.set('page', num);
+
+      return params;
+  });
 
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }
